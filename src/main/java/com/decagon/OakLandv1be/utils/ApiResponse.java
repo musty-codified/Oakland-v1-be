@@ -14,7 +14,6 @@ public class ApiResponse<T> {
     private T data;
     private HttpStatus statusCode;
 
-
     public ApiResponse(String message, Boolean status, T data) {
         this.message = message;
         this.status = status;

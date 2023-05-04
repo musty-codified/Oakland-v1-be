@@ -40,7 +40,6 @@ public class Person extends BaseEntity{
 
     private Boolean verificationStatus;
 
-
     @Column(nullable = false)
     private String password;
 

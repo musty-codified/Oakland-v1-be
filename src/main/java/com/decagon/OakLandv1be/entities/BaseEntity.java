@@ -29,7 +29,6 @@ public abstract class BaseEntity {
     @Column(name="last_updated")
     private Date updatedAt;
 
-
     @PrePersist
     public void createdAt(){
 

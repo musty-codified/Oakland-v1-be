@@ -87,40 +87,6 @@ public class AdminDetailsService implements CommandLineRunner {
         log.info("#############################################################################");
 
 
-//        if (!personRepository.existsByEmail("bennyson1@gmail.com")) {
-//            Customer customer = new Customer();
-//
-//            Person person1 = Person.builder()
-//                    .firstName("Benson")
-//                    .lastName("Malik")
-//                    .email("bennyson1@gmail.com")
-//                    .gender(Gender.MALE)
-//                    .date_of_birth("13-08-1990")
-//                    .phone("9859595959")
-//                    .isActive(true)
-//                    .verificationStatus(true)
-////                        .password(passwordEncoder.encode("password123"))
-////                        .role(Role.CUSTOMER)
-//                    .customer(customer)
-//                    .address("No Address")
-//                    .role(Role.ADMIN)
-//                    .password(passwordEncoder.encode("password123453"))
-//                    .isActive(true)
-//
-//                    .build();
-//            personRepository.save(person);
-//
-//            //customer.setPerson(person);
-//            adminRepository.save(admin);
-//
-//
-//        }
-
-//    @Override
-//    public void run(String... args) throws Exception {
-//        initAdmin();
-//
-//    }
     }
 
     @Override

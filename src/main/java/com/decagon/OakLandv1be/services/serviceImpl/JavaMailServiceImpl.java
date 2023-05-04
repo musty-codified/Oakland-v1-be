@@ -103,8 +103,7 @@ public class JavaMailServiceImpl implements JavaMailService {
             message.setTo(receiverEmail);
             message.setSubject(subject);
             message.setText(text, true);
-//            message.addInline("logo", new ClassPathResource("img/logo.gif"));
-//            message.addAttachment("myDocument.pdf", new ClassPathResource("uploads/document.pdf"));
+
         };
 
         try {
