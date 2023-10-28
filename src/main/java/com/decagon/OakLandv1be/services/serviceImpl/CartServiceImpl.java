@@ -121,7 +121,7 @@ public class CartServiceImpl implements CartService {
 
 
         for (Item item : cartItems) {
-            if(item.getProduct().getId() == foundItem.getProduct().getId()) {
+            if (item.getProduct().getId() == foundItem.getProduct().getId()) {
                 foundItem.setOrderQty(item.getOrderQty() + 1);
                 foundItem.setSubTotal(item.getUnitPrice() * item.getOrderQty());
                 itemRepository.save(foundItem);

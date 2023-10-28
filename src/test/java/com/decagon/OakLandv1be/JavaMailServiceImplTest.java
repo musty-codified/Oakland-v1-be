@@ -13,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 
 import java.io.IOException;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 
 @ExtendWith(MockitoExtension.class)
@@ -27,7 +26,9 @@ public class JavaMailServiceImplTest {
                 .thenReturn(new ResponseEntity<>("sent", HttpStatus.OK));
 
         ResponseEntity<String> responseEntity =
-                javaMailServiceImpl.sendMail("ilemonamustapha@gmail.com", "A random subject", "A random body");
+                javaMailServiceImpl.sendMail("ilemonamustapha@gmail.com",
+                        "A random subject",
+                        "A random body");
 
         Assertions.assertThat(responseEntity.getBody().equals("sent"));
         Assertions.assertThat(responseEntity.getStatusCode().equals(HttpStatus.OK));

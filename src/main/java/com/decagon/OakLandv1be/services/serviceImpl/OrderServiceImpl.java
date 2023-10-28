@@ -87,7 +87,6 @@ public class OrderServiceImpl implements OrderService {
         orderResponseDtos.add(orderResponseDto);
     }
 
-
     @Override
     public OrderResponseDto viewAParticularOrder(Long orderId) {
         Order order = orderRepository.findById(orderId)
@@ -127,7 +126,6 @@ public class OrderServiceImpl implements OrderService {
         int max = Math.min(pageSize * (pageNo + 1), orderResponseDtos.size());
         return new PageImpl<>(orderResponseDtos.subList(pageNo*pageSize, max), pageable, orderResponseDtos.size());
     }
-
 
     @Override
     public String saveOrder(OrderRequestDto orderRequestDto) {
@@ -194,7 +192,6 @@ public class OrderServiceImpl implements OrderService {
         Pageable pageable=PageRequest.of(pageNo,pageSize);
         return orderRepository.findByDeliveryStatus(status,pageable).map(this::orderResponseMapper);
     }
-
 
     @Override
     public Page<OrderResponseDto> getCustomerOrderByPickupStatus(PickupStatus status, Integer pageNo, Integer pageSize) {

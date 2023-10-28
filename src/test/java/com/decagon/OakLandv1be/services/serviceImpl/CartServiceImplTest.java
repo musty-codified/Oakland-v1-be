@@ -1,11 +1,7 @@
 package com.decagon.OakLandv1be.services.serviceImpl;
 
-import com.decagon.OakLandv1be.dto.cartDtos.AddItemToCartDto;
 
 import com.decagon.OakLandv1be.entities.*;
-import com.decagon.OakLandv1be.enums.Gender;
-import com.decagon.OakLandv1be.enums.Role;
-import com.decagon.OakLandv1be.exceptions.AlreadyExistsException;
 import com.decagon.OakLandv1be.services.CartService;
 import com.decagon.OakLandv1be.repositries.*;
 import com.decagon.OakLandv1be.services.CustomerService;
@@ -16,12 +12,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import java.util.*;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;

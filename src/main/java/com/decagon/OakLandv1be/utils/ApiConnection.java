@@ -25,7 +25,6 @@ import static org.apache.http.nio.conn.ssl.SSLIOSessionStrategy.BROWSER_COMPATIB
 @Getter
 @Setter
 public class ApiConnection {
-
     private String url;
     private String API_KEY = "sk_test_26cc81b3fc91a4e6cd2002ba7f2beeec550cb07f";
 
@@ -33,7 +32,6 @@ public class ApiConnection {
         this.url = url;
         this.enforceTlsV1point2();
     }
-
 
     private void enforceTlsV1point2() {
         try {
@@ -64,28 +62,11 @@ public class ApiConnection {
                     .fields(query.getParams())
                     .asJson();
 
-
         }catch (UnirestException e){
             e.printStackTrace();
         }
         assert queryForResponse != null;
         return queryForResponse.getBody().getObject();
     }
-
-//    public JSONObject connectAndQueryWithGet() {
-//        HttpResponse<JsonNode> queryForResponse = null;
-//        try {
-//            queryForResponse = Unirest.get(url)
-//                    .header("Accept", "application/json")
-//                    .header("Authorization", "Bearer " + apiKey)
-//                    .asJson();
-//
-//        } catch (UnirestException e) {
-//            e.printStackTrace();
-//        }
-//        assert queryForResponse != null;
-//        return queryForResponse.getBody().getObject();
-//    }
-
 
 }

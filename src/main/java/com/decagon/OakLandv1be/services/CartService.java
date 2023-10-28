@@ -1,7 +1,6 @@
 package com.decagon.OakLandv1be.services;
 
 import com.decagon.OakLandv1be.dto.CartDto;
-import com.decagon.OakLandv1be.dto.cartDtos.AddItemToCartDto;
 import com.decagon.OakLandv1be.dto.cartDtos.CartItemResponseDto;
 import java.util.List;
 

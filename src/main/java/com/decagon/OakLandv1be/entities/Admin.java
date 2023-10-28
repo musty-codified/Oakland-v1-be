@@ -13,7 +13,6 @@ import javax.persistence.*;
 @Table(name = "admin_tbl")
 public class Admin extends BaseEntity{
 
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "person_id")
     private Person person;

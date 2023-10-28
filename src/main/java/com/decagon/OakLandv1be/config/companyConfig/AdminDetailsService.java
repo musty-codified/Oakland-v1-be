@@ -1,12 +1,9 @@
 package com.decagon.OakLandv1be.config.companyConfig;
 
-import com.decagon.OakLandv1be.config.companyConfig.SuperAdminRepository;
 import com.decagon.OakLandv1be.entities.*;
 import com.decagon.OakLandv1be.enums.BaseCurrency;
 import com.decagon.OakLandv1be.enums.Gender;
 import com.decagon.OakLandv1be.enums.Role;
-
-import com.decagon.OakLandv1be.exceptions.InvalidOperationException;
 
 import com.decagon.OakLandv1be.repositries.AdminRepository;
 import com.decagon.OakLandv1be.repositries.PersonRepository;
@@ -20,7 +17,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.UUID;
 
@@ -40,18 +36,11 @@ public class AdminDetailsService implements CommandLineRunner {
 
     @Value("${admin.super.email}")
     private String adminEmail;
-
     @Value("${admin.currency}")
     private String currency;
     String password = UUID.randomUUID().toString();
 
-
     public void initAdmin() {
-
-        if (superAdminRepository.findAll().size() > 0) {
-            throw new InvalidOperationException("Operation NOT ALLOWED");
-        }
-
 
         Person person = Person.builder()
                 .date_of_birth(new Date().toString())
@@ -85,7 +74,6 @@ public class AdminDetailsService implements CommandLineRunner {
         log.info(superAdminDB.getWallet().toString());
 
         log.info("#############################################################################");
-
 
     }
 

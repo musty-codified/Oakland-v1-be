@@ -2,14 +2,7 @@ package com.decagon.OakLandv1be.config;
 
 import com.decagon.OakLandv1be.config.jwt.JWTCoder;
 import com.decagon.OakLandv1be.config.userDetails.AppUserDetailsService;
-import com.decagon.OakLandv1be.entities.*;
-import com.decagon.OakLandv1be.enums.BaseCurrency;
-import com.decagon.OakLandv1be.enums.Gender;
-import com.decagon.OakLandv1be.enums.Role;
-import com.decagon.OakLandv1be.repositries.CustomerRepository;
-import com.decagon.OakLandv1be.repositries.PersonRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
@@ -33,7 +26,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import javax.servlet.http.HttpServletRequest;
-import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Collections;
 import static com.decagon.OakLandv1be.enums.Role.*;
@@ -45,11 +37,15 @@ import static com.decagon.OakLandv1be.enums.Role.*;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
-    private final String[] WHITE_LISTED_URLS = { "/", "/home", "index", "/css/*", "/js/*", "/api/v1/products/**", "/api/v1/pickup/**",
+    private final String[] WHITE_LISTED_URLS = {
+            "/", "/home", "index", "/css/*", "/js/*",
+            "/api/v1/products/**", "/api/v1/pickup/**",
             "/api/v1/auth/**","/v2/api-docs/**", "/v3/api-docs/**","/configuration/**",
-            "/swagger*/**","/swagger-ui/**","/webjars/**", "/swagger-ui.html", "/api/v1/customer/signup","/api/v1/customer/verifyRegistration/**",
-             "/api/v1/category/**", "/api/v1/subcategory/**", "/api/v1/finalizeTrans/**", "/api/v1/state/**", "/api/v1/products/new-arrivals",
-                     "/api/v1/products/best-selling", "/api/v1/customer/resendVerificationToken/**"
+            "/swagger*/**","/swagger-ui/**","/webjars/**", "/swagger-ui.html",
+            "/api/v1/customer/signup","/api/v1/customer/verifyRegistration/**",
+            "/api/v1/category/**", "/api/v1/subcategory/**", "/api/v1/finalizeTrans/**",
+            "/api/v1/state/**", "/api/v1/products/new-arrivals", "/api/v1/products/best-selling",
+            "/api/v1/customer/resendVerificationToken/**"
     };
     private final AppUserDetailsService appUserDetailsService;
     private static final String AUTHORITY_PREFIX = "ROLE_";

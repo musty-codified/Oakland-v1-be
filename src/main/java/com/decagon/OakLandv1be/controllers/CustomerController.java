@@ -33,31 +33,23 @@ public class CustomerController {
         customerService.saveCustomer(signupRequestDto);
         return new ResponseEntity<>(responseManager.success("Registration Successful! Check your mail for activation link"),HttpStatus.CREATED);
     }
-
     @GetMapping("/customer/verifyRegistration")
     public ResponseEntity<ApiResponse> verifyAccount(@RequestParam("token") String token){
         return customerService.verifyRegistration(token);
     }
-
     @GetMapping("/customer/resendVerificationToken")
     public ResponseEntity<ApiResponse> resendVerificationToken(@RequestParam("email") String email) throws EmailNotFoundException, IOException {
         return customerService.resendVerificationToken(email);
     }
-
-
-
     @PutMapping("/customer/edit-profile")
     public ResponseEntity<String> editProfile(@Valid @RequestBody EditProfileRequestDto editProfileRequestDto){
         customerService.editProfile(editProfileRequestDto);
         return new ResponseEntity<>("Profile Updated Successfully", HttpStatus.OK);
     }
-
-
     @GetMapping("/customer/view-profile")
     public ResponseEntity<CustomerProfileDto> viewProfile(){
         return new ResponseEntity<>(customerService.viewProfile(), HttpStatus.OK);
     }
-
     @GetMapping("/admin/customers-profile/page-sort")
     public ApiResponse<Page<CustomerProfileDto>> viewAllProfilesPaginationAndSort(@RequestParam(defaultValue = "0") Integer pageNo,
                                                      @RequestParam(defaultValue = "16") Integer pageSize,
@@ -72,13 +64,11 @@ public class CustomerController {
         customerService.addProductToFavorites(pid);
         return new ResponseEntity<>("Product added to favourites successfully", HttpStatus.ACCEPTED);
     }
-
     @GetMapping("customer/cart/item/view-all")
     public ResponseEntity<List<CartItemResponseDto>> fetchProductsFromCustomerCart() {
         List<CartItemResponseDto> items = cartService.fetchProductsFromCustomerCart();
         return new ResponseEntity<>(items, HttpStatus.OK);
     }
-
     @GetMapping("/customer/products/favorites/view/{product_id}")
     public ResponseEntity<ProductCustResponseDto> viewASingleFavorite(@PathVariable Long product_id) {
         return new ResponseEntity<>(customerService.viewASingleFavorite(product_id), HttpStatus.OK);

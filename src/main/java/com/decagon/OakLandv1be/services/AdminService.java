@@ -18,7 +18,6 @@ public interface AdminService {
     ApiResponse<Product> updateProduct(Long productId, UpdateProductDto updateproductDto);
 
     Set<AddressResponseDto> viewAllCustomerAddress(Long customerId);
-
     AdminResponseDto createAdmin(AdminRequestDto adminRequestDto) throws IOException;
 
     PickupCenter updatePickupCenter(Long pickupCenterId, UpdatePickUpCenterDto request);

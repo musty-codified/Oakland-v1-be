@@ -70,29 +70,6 @@ class CustomerControllerTest {
 
     List<Product> productList = new ArrayList<>();
 
-
-//    @Test
-//    public void editProfile() throws Exception {
-//        EditProfileRequestDto editProfileRequestDto = new EditProfileRequestDto();
-//        editProfileRequestDto.setFirstName("Many");
-//        editProfileRequestDto.setLastName("Rob");
-//
-//        editProfileRequestDto.setGender(String.valueOf(Gender.MALE));
-//
-//        editProfileRequestDto.setGender(String.valueOf(Gender.MALE));
-//
-//        editProfileRequestDto.setDate_of_birth("11-01-1993");
-//        editProfileRequestDto.setPhone("07068693321");
-//        doNothing().when(customerService).editProfile(editProfileRequestDto);
-//        String requestBody = mapper.writeValueAsString(editProfileRequestDto);
-//        mockMvc.perform(MockMvcRequestBuilders.put("/api/v1/customer/edit-profile", 42L)
-//                        .contentType("application/json").content(requestBody))
-//                .andExpect(status().isOk())
-//                .andReturn();
-//    }
-
-
-
     @Test
     void CustomerController_AddItemToCart_ReturnResponseEntity() {
         try {
@@ -160,13 +137,7 @@ class CustomerControllerTest {
 
     @Test
     public void customerToRemoveProductsFromFavorites() throws Exception {
-//        Long pid = 1L;
-//
-//        String requestBody = mapper.writeValueAsString(pid);
-//        mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/auth/customer/product/favorites/remove/{pid}", 1L)
-//                        .contentType("application/json")
-//                        .content(requestBody))
-//                .andExpect(status().isAccepted());
+
     }
 
     @Test
@@ -197,12 +168,7 @@ class CustomerControllerTest {
            String requestBodie = mapper.writeValueAsString(pageSize);
            String requestBod = mapper.writeValueAsString(sortBy);
            ApiResponse<Page<CustomerProfileDto>> actualResponse = customerController.viewAllProfilesPaginationAndSort(0, 16, "id");
-//       mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/customer/admin/customers-profile/page-sort")
-//               .contentType("application/json")
-//               .content(requestBody)
-//               .content(requestBodie)
-//               .content(requestBod))
-//               .andReturn();
+
            Assertions.assertEquals("Paginated", actualResponse.getMessage());
            Assertions.assertEquals(customerProfileDtoPage, actualResponse.getData());
            Assertions.assertEquals(true, actualResponse.getStatus());

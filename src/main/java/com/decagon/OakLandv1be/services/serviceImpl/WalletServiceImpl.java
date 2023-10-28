@@ -43,9 +43,7 @@ public class WalletServiceImpl implements WalletService {
     private final PersonRepository personRepository;
     private final WalletRepository walletRepository;
     private final TransactionRepository transactionRepository;
-
     private final JavaMailService mailService;
-
     @Value("${admin.super.email}")
     private String superAdminEmail;
     private final CustomerRepository customerRepository;
@@ -111,7 +109,7 @@ public class WalletServiceImpl implements WalletService {
     public Boolean processPayment(BigDecimal grandTotal){
 
         //get the logged in customer wallet
-        Wallet customerWallet=getCurrentlyLoggedInCustomerWallet();
+        Wallet customerWallet = getCurrentlyLoggedInCustomerWallet();
 
         //confirm if the current balance is enough
         if(customerWallet.getAccountBalance().compareTo(grandTotal)>=0){
@@ -218,7 +216,6 @@ public class WalletServiceImpl implements WalletService {
         return new PageImpl<> (fundWalletResponseDtos.subList(pageNo*pageSize, max), pageable, fundWalletResponseDtos.size());
 
     }
-
 
     protected TransactionResponseDto responseMapper(Transaction transaction){
         SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");

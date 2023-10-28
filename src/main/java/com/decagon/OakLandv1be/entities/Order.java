@@ -30,7 +30,6 @@ public class Order extends BaseEntity{
 
     private Double deliveryFee;
 
-
     @Enumerated(EnumType.STRING)
     private ModeOfDelivery modeOfDelivery;
 
