@@ -15,7 +15,7 @@ Following tools and libraries were used during the development of the API :
 - **Docker**
 
 ## Database Schema ##
-<img src="/Users/decagon/Documents/Decagon Directory/Live Project/OakLand-v1-be/src/main/resources/OakLand-v1-be ER Diagram.png"/>
+<img height="50" src="/Users/decagon/Documents/Decagon Directory/Live Project/OakLand-v1-be/src/main/resources/OakLand-v1-be ER Diagram.png" width="50"/>
 
 
 ## Running the server locally ##
