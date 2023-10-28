@@ -19,11 +19,6 @@ public class Item extends BaseEntity{
     private Integer orderQty;
     private Double unitPrice;
     private Double subTotal;
-
-//    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH})
-//    @JoinColumn(name = "customer_id")
-//    private Customer customer;
-
     @ManyToOne
     @JoinColumn(name = "cart_id")
     private Cart cart;

@@ -25,11 +25,6 @@ public class PickupController {
         return ResponseEntity.ok(pickupService.getAll(page,size));
     }
 
-//    @GetMapping("/{name}")
-//    public ResponseEntity<PickupCenterResponse> getPickupCenterByName(@PathVariable String name){
-//        return ResponseEntity.ok(pickupService.getCenterByName(name));
-//    }
-
     @GetMapping("/{email}")
     public ResponseEntity<PickupCenterResponse> getPickupCenterByEmail(@PathVariable String email){
         return ResponseEntity.ok(pickupService.getCenterByEmail(email));
@@ -49,7 +44,6 @@ public class PickupController {
     public ResponseEntity<String>  newCenter(@RequestBody PickupCenterRequest pickupCenterRequest){
         return new ResponseEntity<>(pickupService.createCenter(pickupCenterRequest),HttpStatus.CREATED);
     }
-
     @PutMapping("/update/{pickupId}")
     public ResponseEntity<String> updatePickupCenter(@PathVariable Long pickupId, @RequestBody PickupCenterRequest pickupCenterRequest) {
         return new ResponseEntity<>(pickupService.updatePickupCenter(pickupId, pickupCenterRequest), HttpStatus.OK);

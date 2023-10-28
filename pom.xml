@@ -48,7 +48,6 @@
 			<groupId>com.sendgrid</groupId>
 			<artifactId>sendgrid-java</artifactId>
 		</dependency>
-
 		<!-- https://mvnrepository.com/artifact/com.cloudinary/cloudinary-core -->
 		<dependency>
 			<groupId>com.cloudinary</groupId>

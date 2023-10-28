@@ -23,15 +23,12 @@ public class PaymentController {
 
         return new ResponseEntity<>(response.toString(), HttpStatus.OK);
     }
-
     @GetMapping("/verify/{reference}")
     public ResponseEntity<Object> confirmPayment(@PathVariable String reference){
 
         TransactionInitResponseDto response = service.verifyPayment(reference);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-
-
     @GetMapping("/finalizeTrans")
     public ResponseEntity<String> finalizePayment(@RequestParam("reference") String reference){
         return new ResponseEntity<>(service.finalizeTransaction(reference), HttpStatus.OK);

@@ -21,7 +21,6 @@ public class Product extends BaseEntity{
     private String imageUrl;
 
     private Integer availableQty;
-
     @ManyToOne
     @JoinColumn(name = "subCategory_id")
     private SubCategory subCategory;

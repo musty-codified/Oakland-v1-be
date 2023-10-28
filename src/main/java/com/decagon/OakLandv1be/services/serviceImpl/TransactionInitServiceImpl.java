@@ -22,6 +22,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -46,12 +47,12 @@ public class TransactionInitServiceImpl implements TransactionInitService {
     private final TransactionRepository transactionRepo;
     private ApiConnection apiConnection;
 
-    private final String key = "sk_test_26cc81b3fc91a4e6cd2002ba7f2beeec550cb07f";
+    @Value("${paystack.secretKey}")
+    private String key;
 
     private final WalletService walletService;
 
     private final HttpServletRequest servletRequest;
-
 
 
     @Override
@@ -107,7 +108,7 @@ public class TransactionInitServiceImpl implements TransactionInitService {
                 }
 
             } else {
-                throw new Exception("Error Occured while connecting to paystack url");
+                throw new Exception("Error Occurred while connecting to Paystack url");
             }
             ObjectMapper mapper = new ObjectMapper();
 

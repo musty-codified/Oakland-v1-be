@@ -27,7 +27,6 @@ public class WalletController {
         return new ApiResponse("Request successful", walletService.fundWallet(request), HttpStatus.OK);
     }
 
-
     @GetMapping("customer/wallet/balance")
     public ResponseEntity<ApiResponse<Object>> getBalance(){
         BigDecimal response = walletService.getWalletBalance();
@@ -39,7 +38,6 @@ public class WalletController {
 
         return new ApiResponse<>("Request successful", walletService.viewWalletInfo(), HttpStatus.OK);
     }
-
 
     @GetMapping("customer/wallet/transactions")
     public ResponseEntity<Object> fetchAllTrans(@RequestParam(defaultValue = "0") Integer pageNo,

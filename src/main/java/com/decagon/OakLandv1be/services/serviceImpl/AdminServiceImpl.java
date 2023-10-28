@@ -56,7 +56,6 @@ public class AdminServiceImpl implements AdminService {
     private final SubCategoryRepository subCategoryRepository;
     private final CategoryRepository categoryRepository;
     private final PickupRepository pickupRepository;
-
     private final TokenService tokenService;
     private final TokenRepository tokenRepository;
     private final JavaMailService javaMailService;
@@ -92,8 +91,6 @@ public class AdminServiceImpl implements AdminService {
                 .orElseThrow(() ->
                         new ProductNotFoundException("SubCategory does not exist"));
 
-//        String imageUrl = newProductRequestDto.getProductImage();
-
         Product product = Product.builder()
                 .name(newProductRequestDto.getName())
                 .price(newProductRequestDto.getPrice())
@@ -125,9 +122,7 @@ public class AdminServiceImpl implements AdminService {
         Product product = productRepository.findById(product_id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
         productRepository.delete(product);
-
     }
-
     @Override
     public String deactivateUser(Long customerId) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -145,7 +140,6 @@ public class AdminServiceImpl implements AdminService {
         personRepository.save(customer);
         return isActive ? "Account Re-activated" : "Account deactivated";
     }
-
     @Override
     public ApiResponse<Product> updateProduct(Long productId, UpdateProductDto updateproductDto) {
         Product product = productRepository.findById(productId).
@@ -156,7 +150,6 @@ public class AdminServiceImpl implements AdminService {
                 .findByName(updateproductDto.getSubCategory())
                 .orElseThrow(() ->
                         new ProductNotFoundException("SubCategory does not exist"));
-
 
         product.setName(updateproductDto.getName());
         product.setPrice(updateproductDto.getPrice());
@@ -169,7 +162,6 @@ public class AdminServiceImpl implements AdminService {
         Product updatedProduct = productRepository.save(product);
         return new ApiResponse<>("product updated", true, updatedProduct);
     }
-
     @Override
     public Set<AddressResponseDto> viewAllCustomerAddress(Long customerId){
         String email = extractEmailFromPrincipal().get();

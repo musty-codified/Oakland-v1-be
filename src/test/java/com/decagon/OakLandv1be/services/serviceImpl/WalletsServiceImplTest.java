@@ -6,24 +6,18 @@ import com.decagon.OakLandv1be.entities.Person;
 import com.decagon.OakLandv1be.entities.Wallet;
 import com.decagon.OakLandv1be.repositries.CustomerRepository;
 import com.decagon.OakLandv1be.repositries.WalletRepository;
-import com.decagon.OakLandv1be.services.WalletService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.jupiter.MockitoSettings;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class WalletsServiceImplTest {

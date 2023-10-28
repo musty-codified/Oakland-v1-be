@@ -5,14 +5,9 @@ import com.decagon.OakLandv1be.config.userDetails.AppUserDetailsService;
 import com.decagon.OakLandv1be.dto.ForgotPasswordRequestDto;
 import com.decagon.OakLandv1be.dto.LoginDto;
 import com.decagon.OakLandv1be.dto.PasswordResetDto;
-import com.decagon.OakLandv1be.entities.Person;
-import com.decagon.OakLandv1be.exceptions.InvalidAttributeException;
-import com.decagon.OakLandv1be.repositries.PersonRepository;
 import com.decagon.OakLandv1be.dto.UpdatePasswordDto;
-import com.decagon.OakLandv1be.services.serviceImpl.PersonServiceImpl;
 
 import com.decagon.OakLandv1be.services.PersonService;
-import com.decagon.OakLandv1be.services.serviceImpl.PersonServiceImpl;
 import com.decagon.OakLandv1be.utils.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.apache.http.auth.InvalidCredentialsException;
@@ -27,7 +22,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.io.IOException;
-import java.security.Principal;
 
 
 @RestController
@@ -37,9 +31,7 @@ public class AuthenticationController {
     private final TokenService tokenService;
     private final AuthenticationManager authenticationManager;
     private final AppUserDetailsService userDetailsService;
-
     private final PersonService personService;
-    
 
     @PostMapping("/login")
         public ApiResponse authenticate(@Valid @RequestBody LoginDto loginRequest) {
@@ -48,7 +40,7 @@ public class AuthenticationController {
                 if(!user.isEnabled())
                     throw new UsernameNotFoundException("You have not been verified. Check your email to be verified!");
                 if (!user.isAccountNonLocked()){
-                    return new ApiResponse<>("This account has been deactivated", false, null,HttpStatus.OK);
+                    return new ApiResponse<>("This account has been deactivated", false, null, HttpStatus.OK);
                 }
                 Authentication authentication = authenticationManager.authenticate(
                         new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
@@ -74,7 +66,6 @@ public class AuthenticationController {
         String result = personService.resetPassword(token, passwordResetDto);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
-
     @PutMapping("/update-password")
     public ResponseEntity<ApiResponse<String>> updatePassword(@Valid  @RequestBody UpdatePasswordDto updatePasswordDto){
         ApiResponse response = personService.updatePassword( updatePasswordDto);

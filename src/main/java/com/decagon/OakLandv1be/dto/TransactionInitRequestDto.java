@@ -5,8 +5,6 @@ import com.decagon.OakLandv1be.enums.Channels;
 import com.decagon.OakLandv1be.enums.PaystackBearer;
 import lombok.*;
 
-
-
 @Getter
 @Setter
 @AllArgsConstructor

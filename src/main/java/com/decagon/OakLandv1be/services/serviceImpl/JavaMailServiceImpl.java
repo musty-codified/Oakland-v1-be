@@ -2,13 +2,11 @@ package com.decagon.OakLandv1be.services.serviceImpl;
 
 import com.decagon.OakLandv1be.OakLandV1BeApplication;
 import com.decagon.OakLandv1be.services.JavaMailService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
@@ -17,8 +15,6 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
 
-import javax.mail.Message;
-import javax.mail.internet.MimeMessage;
 import javax.naming.NamingException;
 import javax.naming.directory.Attribute;
 import javax.naming.directory.Attributes;

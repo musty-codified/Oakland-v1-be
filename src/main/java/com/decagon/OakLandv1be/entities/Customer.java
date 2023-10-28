@@ -16,7 +16,6 @@ import java.util.Set;
 @ToString
 @Table(name = "customer_tbl")
 public class Customer extends BaseEntity{
-
     @OneToOne
     @JoinColumn(name = "person_id")
     private Person person;
@@ -28,10 +27,6 @@ public class Customer extends BaseEntity{
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "wallet_id")
     private Wallet wallet;
-
-//    @JsonIgnore
-//    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    private Set<Item> items;
 
     @JsonIgnore
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -45,6 +40,5 @@ public class Customer extends BaseEntity{
     @OneToMany(mappedBy = "customer",  fetch = FetchType.EAGER)
     private Set<Address> addressBook;
     private boolean isActive = true;
-
 
 }

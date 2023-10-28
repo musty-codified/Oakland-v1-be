@@ -23,11 +23,13 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     boolean existsByName(String name);
     @Query(value = "SELECT * FROM product_tbl ORDER BY created_at DESC LIMIT 3", nativeQuery = true)
     List<Product> findProductByCreatedAtDesc();
+
     @Query(value = "SELECT * FROM product_tbl ORDER BY sales DESC LIMIT 3", nativeQuery = true)
            List <Product> findProductsBySalesDesc();
 
     Product findByItem(Item item);
     Product findByItemProductName(String itemName);
+    
     @Query(value="SELECT * FROM product_tbl WHERE sub_category_id=?", nativeQuery = true)
     List<Product> findAllBySubCategoryId(Long subCategoryId);
 }

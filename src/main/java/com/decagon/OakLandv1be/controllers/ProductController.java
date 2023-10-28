@@ -38,7 +38,7 @@ public class ProductController {
                                                                                       @RequestParam(defaultValue = "10") Integer pageSize,
                                                                                       @RequestParam(defaultValue = "id") String sortBy,
                                                                                       @RequestParam(defaultValue = "false") boolean isAscending){
-        return  new ResponseEntity<>(productService.productWithPaginationAndSorting(pageNo, pageSize, sortBy,isAscending),HttpStatus.OK);
+        return new ResponseEntity<>(productService.productWithPaginationAndSorting(pageNo, pageSize, sortBy,isAscending),HttpStatus.OK);
     }
 
     @PostMapping("/upload-image/{productId}")

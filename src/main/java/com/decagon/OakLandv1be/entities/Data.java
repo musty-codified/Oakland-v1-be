@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public  class Data {
+public class Data {
         private BigDecimal amount;
         private String currency;
         private String transaction_date;

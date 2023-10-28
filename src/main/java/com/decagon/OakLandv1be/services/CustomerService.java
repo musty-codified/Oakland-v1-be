@@ -27,14 +27,13 @@ public interface CustomerService {
 
     void addProductToFavorites(Long pid);
 
-    void removeProductFromFavorites(Long pid);
-
     Customer getCurrentlyLoggedInUser();
 
     ProductCustResponseDto viewASingleFavorite(Long product_id);
 
     Page<ProductCustResponseDto> viewFavouritesByPagination(Integer pageNo, Integer pageSize, String sortBy);
     CustomerProfileDto viewProfile();
-
     Page<CustomerProfileDto> viewAllCustomersProfileWithPaginationSorting(Integer pageNumber, Integer pageSize, String sortBy);
+
+    void removeProductFromFavorites(Long pid);
 }

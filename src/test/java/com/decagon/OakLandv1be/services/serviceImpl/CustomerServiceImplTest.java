@@ -164,7 +164,6 @@ class CustomerServiceImplTest {
         assertThrows(UserNotFoundException.class, () -> customerService.viewProfile());
     }
 
-
     @Test
     void viewAllCustomersProfileWithPaginationSorting() {
         Page<Person> personPage = new PageImpl<>(personList, Pageable.ofSize(pageSize), 2);

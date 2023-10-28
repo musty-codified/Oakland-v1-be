@@ -45,10 +45,6 @@ public class ProductServiceImpl implements ProductService {
 
     private final CloudinaryConfig cloudinaryConfig;
 
-//    @Override
-//    public Page<ProductCustResponseDto> productWithPaginationAndSorting(Integer offset, Integer size, String field) {
-//        return null;
-//    }
 
     public ProductCustResponseDto fetchASingleProduct(Long product_id) {
         Product product = productRepository.findById(product_id)
@@ -79,9 +75,16 @@ public class ProductServiceImpl implements ProductService {
         });
         return productCustResponseDtoList;
     }
+    @Override
+    public Page<ProductCustResponseDto> productWithPaginationAndSorting(Integer page, Integer size,
+                                                                        String sortingField, boolean isAscending) {
+        return productRepository.findAll(PageRequest.of(page, size,
+                isAscending ? Sort.Direction.ASC : Sort.Direction.DESC, sortingField)).map(Mapper::productToProductResponseDto);
+    }
 
     @Override
-    public ApiResponse<Page<ProductResponseDto>> getAllProducts(Integer pageNo, Integer pageSize, String sortBy, boolean isAscending) {
+    public ApiResponse<Page<ProductResponseDto>> getAllProducts(Integer pageNo, Integer pageSize,
+                                                                String sortBy, boolean isAscending) {
         List<Product> products = productRepository.findAll();
 
         List<ProductResponseDto> productCustResponseDtos = new ArrayList<>();
@@ -115,11 +118,6 @@ public class ProductServiceImpl implements ProductService {
 
     }
 
-    @Override
-    public Page<ProductCustResponseDto> productWithPaginationAndSorting(Integer page, Integer size, String sortingField,boolean isAscending) {
-        return productRepository.findAll(PageRequest.of(page, size,
-                isAscending ? Sort.Direction.ASC : Sort.Direction.DESC, sortingField)).map(Mapper::productToProductResponseDto);
-    }
 
     @Override
     public String uploadProductImage(long productId, MultipartFile image) throws IOException {
@@ -146,6 +144,16 @@ public class ProductServiceImpl implements ProductService {
                 .collect(Collectors.toList());
     }
 
+    private ProductCustResponseDto productResponseMapper(Product product){
+        return ProductCustResponseDto.builder()
+                .name(product.getName())
+                .price(product.getPrice())
+                .imageUrl(product.getImageUrl())
+                .color(product.getColor())
+                .description(product.getDescription())
+                .build();
+    }
+
     public void deleteProductImage(String publicUrl){
         try {
             cloudinaryConfig.cloudinary().uploader().destroy(publicUrl, ObjectUtils.emptyMap());
@@ -153,6 +161,7 @@ public class ProductServiceImpl implements ProductService {
             throw new RuntimeException(e);
         }
     }
+
 
     public ApiResponse<Page<ProductResponseDto>> getAllProductsBySubCategory(Long subCategoryId, Integer pageNo, Integer pageSize, String sortBy, boolean isAscending) {
         List<Product> products = productRepository.findAllBySubCategoryId(subCategoryId);
@@ -202,7 +211,6 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
-
     private File convertMultiPartToFile(MultipartFile image) throws IOException {
         String file =  image.getOriginalFilename();
         if (file == null) throw new AssertionError();
@@ -211,15 +219,6 @@ public class ProductServiceImpl implements ProductService {
         fos.write(image.getBytes());
         fos.close();
         return convFile;
-    }
-    protected ProductCustResponseDto productResponseMapper(Product product){
-        return ProductCustResponseDto.builder()
-                .name(product.getName())
-                .price(product.getPrice())
-                .imageUrl(product.getImageUrl())
-                .color(product.getColor())
-                .description(product.getDescription())
-                .build();
     }
 
     @Override

@@ -28,12 +28,9 @@ public class FakeDb {
 
     private final AdminRepository adminRepository;
 
-
-
     @Bean
     @Qualifier("MyOtherCommand")
     public CommandLineRunner myCommandLineRunner(PersonRepository personRepository,
-
                                                  ProductRepository productRepository,
                                                  CustomerRepository customerRepository,
                                                  SubCategoryRepository subCategoryRepository,
@@ -77,8 +74,8 @@ public class FakeDb {
                         .address("No Address")
                         .password(passwordEncoder.encode("password123453"))
                         .isActive(true)
-
                         .build();
+                
                 Person savedPerson = personRepository.save(customerPerson);
                 customer.setPerson(savedPerson);
                 customerRepository.save(customer);
@@ -214,6 +211,8 @@ public class FakeDb {
                 customer4.setWallet(wallet3);
                 customerRepository.save(customer4);
             }
+
+            //===================================================================================================//
 
             if(!stateRepository.existsById(1L)) {
                 State lagos = State.builder()

@@ -31,7 +31,6 @@ public abstract class BaseEntity {
 
     @PrePersist
     public void createdAt(){
-
         this.createdAt = new Date();
     }
 

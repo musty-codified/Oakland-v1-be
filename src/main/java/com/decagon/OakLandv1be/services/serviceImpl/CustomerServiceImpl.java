@@ -1,7 +1,6 @@
 package com.decagon.OakLandv1be.services.serviceImpl;
 
 
-import com.decagon.OakLandv1be.config.CloudinaryConfig;
 import com.decagon.OakLandv1be.config.tokens.TokenService;
 import com.decagon.OakLandv1be.dto.CustomerProfileDto;
 import com.decagon.OakLandv1be.dto.EditProfileRequestDto;
@@ -165,7 +164,6 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
 
-
     @Override
     public ResponseEntity<ApiResponse> verifyRegistration(String token) {
 
@@ -245,8 +243,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer getCurrentlyLoggedInUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        if (!(authentication instanceof AnonymousAuthenticationToken))
-//            throw new UnauthorizedUserException("Login to carry out this operation");
+
         Person loggedInUser = personRepository.findByEmail(authentication.getName())
                 .orElseThrow(() -> new UserNotFoundException("No user with this email"));
         return loggedInUser.getCustomer();
@@ -302,7 +299,6 @@ public class CustomerServiceImpl implements CustomerService {
         Page<ProductCustResponseDto> page = new PageImpl<>
                 (productCustResponseDtos.subList(minimum, max), pageable,
                         productCustResponseDtos.size());
-
         return page;
     }
 
@@ -321,7 +317,6 @@ public class CustomerServiceImpl implements CustomerService {
                 .verificationStatus(loggedInCustomer.getVerificationStatus())
                 .address(loggedInCustomer.getAddress())
                 .build();
-
     }
 
     @Override
